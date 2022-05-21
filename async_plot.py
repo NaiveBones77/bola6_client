@@ -9,13 +9,11 @@ ax.set_ylim(-1.5, 1.5)
 
 ln, = ax.plot(th, np.sin(th))
 
-def slow_loop(N, ln):
-    for j in range(N):
-        time.sleep(.1)  # to simulate some work
-        if j % 10:
-            ln.set_ydata(np.sin(((j // 10) % 5 * th)))
-            ln.figure.canvas.draw_idle()
+def slow_loop(ln):
+
+        ln.set_ydata(np.sin(((j // 10) % 5 * th)))
+        ln.figure.canvas.draw_idle()
 
         ln.figure.canvas.flush_events()
 
-slow_loop(100, ln)
+slow_loop(ln, data)
